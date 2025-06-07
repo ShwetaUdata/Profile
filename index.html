@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html {
+      margin: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #f5f5f5;
+      border-right: 1px solid #ccc;
+      padding: 20px 10px;
+      transition: transform 0.3s ease;
+      text-align: center;
+      overflow-y: auto;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar h3 {
+      margin: 10px 0 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      padding: 12px 10px;
+      margin: 5px 0;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .sidebar ul li:hover,
+    .sidebar ul li.active {
+      background-color: #e0e0e0;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background-color: #333;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 30px 40px;
+      background-color: #fafafa;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #eaeaea;
+    }
+
+/* sidebar hiden */
+     .main.full {
+      margin-left: -250px;
+    }
+
+    .main.with-sidebar {
+      margin-left: 0px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ---------------------------- -->
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <img src="Shweta.jpg" alt="Profile">
+      <h3>Shweta Udata</h3>
+      <ul>
+        <!-- <li onclick="showSection('details')" class="active">Details</li>
+        <li onclick="showSection('results')">Results</li>
+        <li onclick="showSection('projects')">Projects</li>
+        <li onclick="showSection('education')">Education</li> -->
+
+        <li onclick="showSection('details')" class="active">Details</li>
+        <li onclick="showSection('internship')">Internship</li>
+        <li onclick="showSection('education')">Education</li>
+        <li onclick="showSection('skills')">Skills</li>
+        <li onclick="showSection('projects')">Projects</li>
+        <li onclick="showSection('certificates')">Certificates</li>
+        <!-- <li onclick="downloadResume()">Resume Download</li> -->
+         <li onclick="openResume()">Resume Download</li>
+
+        
+        
+      </ul>
+    </div>
+
+    <!-- ---------------------------- -->
+
+    <!-- ---------------------------- -->
+
+
+    <!-- Main Content -->
+    <div class="main with-sidebar" id="main">
+
+
+      <!-- Header -->
+      <div class="header">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        Welcome to My Profile
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+
+        <div id="details" class="section active">
+          <h1>Details</h1>
+          <p>As a fresher I am actively looking for a job in Full Stack Developer, I am Skilled in JavaScript, React.js, Express and MySQL with hands-on experience developing a full-stack e-commerce platform as part of a capstone project.</p>
+        </div>
+
+        <!-- Internship Section -->
+        <div id="internship" class="section">
+          <h1>Internship</h1>
+          <ol>
+            <li>Vector India</li>
+            <ul>
+              <li>Certification in MERN Stack Developer</li>
+              <li>26 Jul 2024 - 26 Jan 2025</li>
+            </ul><br>
+
+            <li>Agrwal Technology Pvt Ltd</li>
+            <ul>
+              <li>Basics of Python</li>
+              <li>JavaScript</li>
+              <li>Responsive Web Development with HTML and CSS</li>
+            </ul>
+          </ol>
+        </div>
+
+         <!-- Education Section -->
+        <div id="education" class="section">
+          <h1>Education</h1>
+          <table>
+            <tr>
+              <th>Course</th>
+              <th>College</th>
+              <th>Stream</th>
+              <th>Percentage</th>
+              <th>YOP</th>
+            </tr>
+            <tr style="text-align: center; height: 40px;">
+                        <td>B.Tech</td>
+                        <td>Walchand Institute of Technology, Solapur</td>
+                        <td>Electronics Engineering</td>
+                        <td>75.01</td>
+                        <td>2021-2024</td>
+                    </tr>
+            <tr style="text-align: center; height: 40px;">
+                        <td>Diploma</td>
+                        <td>Shir Siddheshwar Women's Polytechnic, Solapur</td>
+                        <td>Electronics and Telecommunication</td>
+                        <td>84.76</td>
+                  <td>2018-2021</td>
+              </tr>
+            <tr style="text-align: center; height: 40px;">
+                        <td>SSC</td>
+                        <td>D.R. Shriram English Medium School, Solapur</td>
+                        <td>Secondary School of Certificate</td>
+                        <td>66.6</td>
+                        <td>2017-2018</td>
+            </tr>   
+          </table>
+        </div>
+
+        <div id="skills" class="section">
+         <h1>Skills</h1><br>
+         <ul>
+          <li> <b>Frontend : </b><span>HTML, CSS, JavaScript, React.js</span><br><br></li>
+          <li><b>Backend : </b><span>Express.js</span><br><br></li>
+          <li> <b>Database : </b><span>Mongodb, MySQL</span><br><br></li>
+          <li><b>Programming Language : </b><span>Python</span><br></li>
+         </ul>
+               
+        </div>
+
+        <div id="projects" class="section">
+          <h1>Projects</h1>
+          <ol>
+            <li><div>
+                    <h4><a href="" style="text-decoration: none;">JIRA Work Management:</a></h4>
+                    
+                    <p>It is a task-tracking collaboration tool that is intented for business teams. Work migth mean completing a specific job or a project, or it migth mean managing a periodic task or overseeing an ongoing process. JIRA Work Management is a product by Atlassian designed to help business teams plan, track, and manage work efficiently. It provides an easy-to-use interface and tools tailored for non-technical teams like marketing, HR, operations, finance, and design. It’s built on the same core platform as Jira Software but focuses more on task management, workflow visualization, and collaboration rather than software development.</p>
+                    <p><b>Skill Used : </b>React.js, Express, Mongodb</p>
+                </div></li>
+            <li><div>
+                    <h4> <a href="" style="text-decoration: none;">Fitzone: Building a Dynamic Gym Website :</a> </h4>
+                    
+                    <p>Developed a dynamic web platform using HTML, CSS, JavaScript focusing on user-friendly design and scalability. Implemented features like scheduling and booking systems to enhance operational efficiency, aligning with principles of modern web application delivery. Fitzone is a responsive and feature-rich gym website designed to offer a seamless user experience for fitness enthusiasts and potential members. Built using modern web technologies, the site provides an engaging interface to showcase gym services, trainer profiles, class schedules, membership plans, and user testimonials.</p>
+                    <p><b>Skill Used : </b>HTML, CSS, JavaScript</p>
+                </div></li>
+          </ol>
+                
+                 
+        </div>
+        
+
+        <div id="certificates" class="section">
+           <h2>Certificates</h2>
+                <ul>
+                    <li>Basics of Python</li><br>
+                    <li>JavaScript</li><br>
+                    <li>Responsive Web Development with HTML and CSS</li>
+                </ul>
+        </div>
+
+
+      </div>
+
+      <!-- ---------------------------- -->
+
+     
+
+      <!-- Footer -->
+      <div class="footer">
+        © 2025 Shweta Udata | All rights reserved.
+      </div>
+    </div>
+    <!-- ---------------------------- -->
+
+
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      document.querySelectorAll('.sidebar ul li').forEach(li => {
+        li.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+   function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const main = document.getElementById('main');
+
+      sidebar.classList.toggle('hidden');
+      main.classList.toggle('with-sidebar');
+      main.classList.toggle('full');
+    }
+
+  //   function downloadResume() {
+  //   const link = document.createElement('a');
+  //   link.href = 'Shweta.pdf'; // Replace with your actual path
+  //   link.download = 'Shweta_Udata.pdf';
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // }
+
+
+  function openResume() {
+    window.open('Shweta_Udata.pdf', '_blank'); // Use your actual file path here
+  }
+
+
+  </script>
+</body>
+</html>
